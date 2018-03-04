@@ -1,0 +1,15 @@
+package com.tx.dao;
+
+import com.tx.pojo.User;
+
+public interface UserDao {
+	//登录验证
+	public User queryUser(User u);
+	//注册
+	public int regUser(User u);
+	//验证用户名是否存在
+	public User queryUserByUname(String uname);
+	//根据pname查用户
+	public User queryUserByPname(String pname);
+	
+}

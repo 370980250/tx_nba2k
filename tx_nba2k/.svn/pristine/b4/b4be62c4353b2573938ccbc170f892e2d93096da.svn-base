@@ -1,0 +1,15 @@
+package com.tx.test;
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.tx.pojo.Team;
+public class Test2k {
+	
+	public static void main(String[] args) {
+		
+		
+	}
+}

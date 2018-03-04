@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tx.dao.AnnouncementDao">
+	<resultMap type="anno" id="annoMap">
+		<id column="id" property="id"/>
+		<result column="title" property="title"/>
+		<result column="context" property="context"/>
+		<result column="releaseDate" property="releaseDate"/>
+		<association property="u" column="userid" javaType="user" select="com.tx.dao.UserDao.queryUserById"></association>
+	</resultMap>
+
+	<select id="queryAnnouncementList" resultMap="annoMap">
+		select * from tx_announcement order by releaseDate desc
+	</select>
+	
+	<select id="queryAnnouncementById" resultMap="annoMap">
+		select * from tx_announcement where id=#{id}
+	</select>
+	
+	<insert id="addAnno" parameterType="anno">
+		insert into tx_announcement(title,context,userid,releaseDate) values(#{title},#{context},#{u.id},#{releaseDate})
+	</insert>
+	
+	<update id="updateAnno" parameterType="anno">
+		update tx_announcement
+		<trim prefix="set" suffixOverrides=",">
+			<if test="title!=null and title!=''">
+				title = #{title},
+			</if>
+			<if test="context!=null and context!=''">
+				context = #{context},
+			</if>
+			<if test="releaseDate!=null">
+				releaseDate= #{releaseDate},
+			</if>
+			<if test="u.id!=0">
+				userid = #{u.id},
+			</if>
+			
+		</trim>
+			where id = #{id}
+	</update>
+	
+	<delete id="deleteAnno" parameterType="int">
+		delete from tx_announcement where id=#{id}
+	</delete>
+</mapper>

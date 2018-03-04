@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+	
+	
+	<!-- 配置队伍集合 -->
+	<bean id="warriors" class="com.tx.pojo.Team">
+		<property name="tename" value="warriors"></property>
+		<property name="tcname" value="勇士"></property>
+		<property name="pic" value="img/warriors.png"></property>
+	</bean>
+	
+	<bean id="cavaliers" class="com.tx.pojo.Team">
+		<property name="tename" value="cavaliers"></property>
+		<property name="tcname" value="骑士"></property>
+		<property name="pic" value="img/cavaliers.png"></property>
+	</bean>
+	
+	<bean id="spurs" class="com.tx.pojo.Team">
+		<property name="tename" value="spurs"></property>
+		<property name="tcname" value="马刺"></property>
+		<property name="pic" value="img/spurs.png"></property>
+	</bean>
+	
+	<bean id="wizards" class="com.tx.pojo.Team">
+		<property name="tename" value="wizards"></property>
+		<property name="tcname" value="奇才"></property>
+		<property name="pic" value="img/wizards.png"></property>
+	</bean>
+	
+	<bean id="celtics" class="com.tx.pojo.Team">
+		<property name="tename" value="celtics"></property>
+		<property name="tcname" value="凯尔特人"></property>
+		<property name="pic" value="img/celtics.png"></property>
+	</bean>
+	
+	<bean id="heat" class="com.tx.pojo.Team">
+		<property name="tename" value="heat"></property>
+		<property name="tcname" value="热火"></property>
+		<property name="pic" value="img/heat.png"></property>
+	</bean>
+	
+	<bean id="bucks" class="com.tx.pojo.Team">
+		<property name="tename" value="bucks"></property>
+		<property name="tcname" value="雄鹿"></property>
+		<property name="pic" value="img/bucks.png"></property>
+	</bean>
+	
+	<bean id="raptors" class="com.tx.pojo.Team">
+		<property name="tename" value="raptors"></property>
+		<property name="tcname" value="猛龙"></property>
+		<property name="pic" value="img/raptors.png"></property>
+	</bean>
+	
+	<bean id="magic" class="com.tx.pojo.Team">
+		<property name="tename" value="magic"></property>
+		<property name="tcname" value="魔术"></property>
+		<property name="pic" value="img/magic.png"></property>
+	</bean>
+	
+	<bean id="pacers" class="com.tx.pojo.Team">
+		<property name="tename" value="pacers"></property>
+		<property name="tcname" value="步行者"></property>
+		<property name="pic" value="img/pacers.png"></property>
+	</bean>
+	
+	<bean id="knicks" class="com.tx.pojo.Team">
+		<property name="tename" value="knicks"></property>
+		<property name="tcname" value="尼克斯"></property>
+		<property name="pic" value="img/knicks.png"></property>
+	</bean>
+	<bean id="hornets" class="com.tx.pojo.Team">
+		<property name="tename" value="hornets"></property>
+		<property name="tcname" value="黄蜂"></property>
+		<property name="pic" value="img/hornets.png"></property>
+	</bean>
+	
+	<bean id="pistons" class="com.tx.pojo.Team">
+		<property name="tename" value="pistons"></property>
+		<property name="tcname" value="活塞"></property>
+		<property name="pic" value="img/pistons.png"></property>
+	</bean>
+	
+	<bean id="sixers" class="com.tx.pojo.Team">
+		<property name="tename" value="sixers"></property>
+		<property name="tcname" value="76人"></property>
+		<property name="pic" value="img/sixers.png"></property>
+	</bean>
+	
+	<bean id="hawks" class="com.tx.pojo.Team">
+		<property name="tename" value="hawks"></property>
+		<property name="tcname" value="老鹰"></property>
+		<property name="pic" value="img/hawks.png"></property>
+	</bean>
+	
+	<bean id="bulls" class="com.tx.pojo.Team">
+		<property name="tename" value="bulls"></property>
+		<property name="tcname" value="公牛"></property>
+		<property name="pic" value="img/bulls.png"></property>
+	</bean>
+	
+	<bean id="nets" class="com.tx.pojo.Team">
+		<property name="tename" value="nets"></property>
+		<property name="tcname" value="篮网"></property>
+		<property name="pic" value="img/nets.png"></property>
+	</bean>
+
+	<bean id="timberwolves" class="com.tx.pojo.Team">
+		<property name="tename" value="timberwolves"></property>
+		<property name="tcname" value="森林狼"></property>
+		<property name="pic" value="img/timberwolves.png"></property>
+	</bean>
+	
+	<bean id="rockets" class="com.tx.pojo.Team">
+		<property name="tename" value="rockets"></property>
+		<property name="tcname" value="火箭"></property>
+		<property name="pic" value="img/rockets.png"></property>
+	</bean>
+	
+	<bean id="clippers" class="com.tx.pojo.Team">
+		<property name="tename" value="clippers"></property>
+		<property name="tcname" value="快船"></property>
+		<property name="pic" value="img/clippers.png"></property>
+	</bean>
+	
+	<bean id="nuggets" class="com.tx.pojo.Team">
+		<property name="tename" value="nuggets"></property>
+		<property name="tcname" value="掘金"></property>
+		<property name="pic" value="img/nuggets.png"></property>
+	</bean>
+	
+	<bean id="lakers" class="com.tx.pojo.Team">
+		<property name="tename" value="lakers"></property>
+		<property name="tcname" value="湖人"></property>
+		<property name="pic" value="img/lakers.png"></property>
+	</bean>
+	
+	<bean id="blazers" class="com.tx.pojo.Team">
+		<property name="tename" value="blazers"></property>
+		<property name="tcname" value="开拓者"></property>
+		<property name="pic" value="img/blazers.png"></property>
+	</bean>
+	
+	<bean id="pelicans" class="com.tx.pojo.Team">
+		<property name="tename" value="pelicans"></property>
+		<property name="tcname" value="鹈鹕"></property>
+		<property name="pic" value="img/pelicans.png"></property>
+	</bean>
+	
+	<bean id="suns" class="com.tx.pojo.Team">
+		<property name="tename" value="suns"></property>
+		<property name="tcname" value="太阳"></property>
+		<property name="pic" value="img/suns.png"></property>
+	</bean>
+	
+	<bean id="jazz" class="com.tx.pojo.Team">
+		<property name="tename" value="jazz"></property>
+		<property name="tcname" value="爵士"></property>
+		<property name="pic" value="img/jazz.png"></property>
+	</bean>
+	<bean id="grizzlies" class="com.tx.pojo.Team">
+		<property name="tename" value="grizzlies"></property>
+		<property name="tcname" value="灰熊"></property>
+		<property name="pic" value="img/grizzlies.png"></property>
+	</bean>
+	
+	<bean id="kings" class="com.tx.pojo.Team">
+		<property name="tename" value="kings"></property>
+		<property name="tcname" value="国王"></property>
+		<property name="pic" value="img/kings.png"></property>
+	</bean>
+	<bean id="thunder" class="com.tx.pojo.Team">
+		<property name="tename" value="thunder"></property>
+		<property name="tcname" value="雷霆"></property>
+		<property name="pic" value="img/thunder.png"></property>
+	</bean>
+	
+	<bean id="mavericks" class="com.tx.pojo.Team">
+		<property name="tename" value="mavericks"></property>
+		<property name="tcname" value="小牛"></property>
+		<property name="pic" value="img/mavericks.png"></property>
+	</bean>
+	
+	
+	<util:list id="ts">
+		<ref bean="warriors"/>
+		<ref bean="mavericks"/>
+		<ref bean="kings"/>
+		<ref bean="celtics"/>
+		<ref bean="nets"/>
+		<ref bean="knicks"/>
+		<ref bean="sixers"/>
+		<ref bean="raptors"/>
+		<ref bean="nuggets"/>
+		<ref bean="blazers"/>
+		<ref bean="timberwolves"/>
+		<ref bean="thunder"/>
+		<ref bean="jazz"/>
+		<ref bean="bulls"/>
+		<ref bean="cavaliers"/>
+		<ref bean="pistons"/>
+		<ref bean="pacers"/>
+		<ref bean="bucks"/>
+		<ref bean="clippers"/>
+		<ref bean="lakers"/>
+		<ref bean="suns"/>
+		<ref bean="hawks"/>
+		<ref bean="hornets"/>
+		<ref bean="heat"/>
+		<ref bean="magic"/>
+		<ref bean="wizards"/>
+		<ref bean="rockets"/>
+		<ref bean="grizzlies"/>
+		<ref bean="pelicans"/>
+		<ref bean="spurs"/>
+	</util:list>
+	
+	
+</beans>
+

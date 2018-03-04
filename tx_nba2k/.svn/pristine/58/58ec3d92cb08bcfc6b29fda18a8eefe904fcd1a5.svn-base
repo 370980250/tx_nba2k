@@ -1,0 +1,19 @@
+package com.tx.service.inter;
+
+import java.util.List;
+
+import com.tx.pojo.Team;
+
+public interface ITeamService {
+	public Team queryTeam(Team team);
+
+	public int addTeam(Team team);
+	
+	public List<Team> queryTeamListByPick(int gid);
+
+	public int updateTeam(Team team);
+	
+	public int truncateTeam(int gid);
+
+	public List<Team> queryTeamByGid(int gid);
+}

@@ -1,0 +1,33 @@
+		function zhuxiao($scope,$http){
+			$scope.exit = function(){
+				alert("exit");
+				$http.get("User/exit.do").then(function(value) {
+					var text = window.location.href;
+					location.href=text;
+				});
+			};
+			
+		}
+
+
+ 		function denglu($scope,$http){
+ 			$scope.login = function(){
+ 				$http({
+					method:"post",
+					params:{uname:$("#uname").val(),pwd:$("#pwd").val()},
+					url:"User/login.do"
+				}).then(function successCallback(obj){
+					console.log(obj);
+					if(obj.data!=null){
+						var text = window.location.href;
+						location.href=text;
+					}else{
+						$scope.errorMess= "用户名密码错误";
+					}
+				});
+			};
+ 			
+ 		}
+ 		
+ 		
+ 	

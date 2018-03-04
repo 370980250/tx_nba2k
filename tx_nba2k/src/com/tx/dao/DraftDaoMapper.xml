@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tx.dao.DraftDao">
+	<resultMap type="draft" id="draftMap">
+		<id column="id" property="id"/>
+		<result column="pickid" property="pickid"/>
+		<result column="joinDate" property="joinDate"/>
+		<result column="passDate" property="passDate"/>
+		<result column="state" property="state"/>
+		<result column="draftTitle" property="draftTitle"/>
+		<result column="draftContext" property="draftContext"/>
+		<association column="userid" property="u" javaType="user" select="com.tx.dao.UserDao.queryUserById"></association>
+		<association column="tid" property="team" javaType="team" select="com.tx.dao.TeamDao.queryTeamById"></association>
+		<association property="grade" column="gid" javaType="grade" select="com.tx.dao.GradeDao.queryGradeById"></association>
+		<association property="admin" column="adminid" javaType="user" select="com.tx.dao.UserDao.queryUserById"></association>
+	</resultMap>
+	<select id="queryDraftList" parameterType="int" resultMap="draftMap">
+		select * from tx_draft where  gid=#{gid}  order by joinDate desc
+	</select>
+
+	<insert id="addDraft" parameterType="draft" >
+		insert into tx_draft(userid,joinDate,state,gid) values(#{u.id},#{joinDate},#{state},#{grade.id})
+
+	</insert>
+
+	
+	<select id="queryDraft" parameterType="draft" resultMap="draftMap">
+		select * from tx_draft where gid=#{grade.id} and userid=#{u.id}
+	</select>
+	
+	<update id="updateDraft" parameterType="draft">
+		update tx_draft 
+		<trim prefix="set" suffixOverrides=",">
+
+				state=#{state},
+			<if test="admin.id!=0">
+				adminid=#{admin.id},
+			</if>
+			<if test="passDate!=null">
+				passDate=#{passDate},
+			</if>
+			<if test="team!=null">
+				tid=#{team.id},
+			</if>
+			<if test="pickid!=0">
+				pickid = #{pickid},
+			</if>
+			<if test="joinDate!=null">
+				joinDate = #{joinDate},
+			</if>
+			<if test="draftTitle!=null and draftTitle!=''">
+				draftTitle = #{draftTitle},
+			</if>
+			<if test="draftContext!=null and draftContext!=''">
+				draftContext = #{draftContext},
+			</if>
+			<if test="drawDate!=null">
+				drawDate=#{drawDate},
+			</if>
+
+		</trim>
+		 where gid =#{grade.id} and userid=#{u.id}
+	</update>
+	
+	<update id="updateDraftById" parameterType="draft">
+		update tx_draft 
+		<trim prefix="set" suffixOverrides=",">
+			<if test="draftTitle!=null and draftTitle!=''">
+				draftTitle = #{draftTitle},
+			</if>
+			<if test="draftContext!=null and draftContext!=''">
+				draftContext = #{draftContext},
+			</if>
+			<if test="u!=null" >
+				userid = #{u.id}, 
+			</if>
+		</trim>
+		 where id = #{id}
+	</update>
+	
+	<update id="truncateDraft" parameterType="int">
+		update tx_draft set tid = null where gid = #{gid}
+		
+	</update>
+</mapper>

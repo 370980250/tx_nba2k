@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.tx.dao.TradeDao">
+<resultMap type="trade" id="tradeMap">
+	<id column="id" property="id"/>
+	<result column="tradeDate" property="tradeDate"/>
+	<result column="state" property="state"/> 
+	<result column="tradePrice" property="tradePrice"/>
+	<association property="grade" column="gid" javaType="grade" select="com.tx.dao.GradeDao.queryGradeById"></association>
+	<association property="user" column="userid" javaType="user" select="com.tx.dao.UserDao.queryUserById"></association>
+	<collection property="ts" column="tid" ofType="team" select="com.tx.dao.TeamDao.queryTeamById"></collection>
+	<collection property="ps1" column="pid1" ofType="player" select="com.tx.dao.PlayerDao.queryPLayerById"></collection>
+	<collection property="ps2" column="pid2" ofType="player" select="com.tx.dao.PlayerDao.queryPLayerById"></collection>
+</resultMap>
+<resultMap type="team" id="teamMap1">
+		<id column="id" property="id"/>
+		<result column="tcname" property="tcname"/>
+		<result column="tename" property="tename"/>
+		<result column="pic" property="pic"/>
+		<result column="pickid" property="pickid"/>
+		<result column="win" property="win"/>
+		<result column="lose" property="lose"/>
+		<result column="updateDate" property="updateDate"/>
+		<association property="grade" column="gid" javaType="grade" select="com.tx.dao.GradeDao.queryGradeById"></association>
+		<association property="user" column="userid" javaType="user" select="com.tx.dao.UserDao.queryUserById"></association>
+	</resultMap>
+	<resultMap type="player" id="playerMap1">
+	<id column="id" property="id"/>
+	<result column="ename" property="ename"/>
+	<result column="cname" property="cname"/>
+	<result column="tname" property="tname"/>
+	<result column="position" property="position"/>
+	<result column="ability" property="ability"/>
+	<result column="round" property="round"/>
+	<result column="price" property="price"/>
+	<result column="badges" property="badges"/>
+	<association javaType="grade" column="gid" property="grade" select="com.tx.dao.GradeDao.queryGradeById" ></association>
+	<association property="team" column="tid" javaType="team" select="com.tx.dao.TeamDao.queryTeamById"></association>
+	
+</resultMap>
+<select id="queryTradeList" parameterType="int" resultType="trade">
+	select * from tx_trade where gid = #{gid} order by tradeDate desc
+</select>
+
+<select id="queryTradeByMaxId" resultMap="tradeMap">
+	select * from tx_trade where id = (select max(id) from tx_trade)	
+</select>
+
+<insert id="addTrade" parameterType="trade">
+	insert into tx_trade(tradeDate,tradePrice,gid,state) values(#{tradeDate},#{tradePrice},#{grade.id},#{state})
+</insert>
+
+<insert id="addTradeAndTeam" parameterType="Integer[]">
+	insert into tx_tradeandteam(teamid,tradeid) values(
+	<foreach collection="array" item="id" separator=",">#{id}</foreach>
+	)
+</insert>
+<insert id="addTradeAndPlayer" parameterType="Integer[]">
+	insert into tx_tradeandplayer(pid,tid) values(
+	<foreach collection="array" item="id" separator=",">#{id}</foreach>
+	)
+</insert>
+<select id="updateTradeByTid" parameterMap="updateTradeMap" statementType="CALLABLE">
+	{call pro_tx_updateTradeByTid(
+	?,?,?,?,?,?
+	)}
+</select>
+
+<parameterMap type="map" id="updateTradeMap">
+		<parameter property="id" mode="IN" jdbcType="INTEGER" />
+		<parameter property="state" mode="IN"  jdbcType="INTEGER"/>
+		<parameter property="v_team" mode="OUT" jdbcType="CURSOR" resultMap="teamMap1"/>
+		<parameter property="player1" mode="OUT" jdbcType="CURSOR" resultMap="playerMap1" />
+		<parameter property="player2" mode="OUT" jdbcType="CURSOR" resultMap="playerMap1" />
+		<parameter property="v_trade" mode="OUT" javaType="resultSet" jdbcType="CURSOR" resultMap="tradeMap"/>
+</parameterMap>
+
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+	<!-- 设置mybatis允许插入null -->
+	<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	<!-- 取别名 -->
+	<typeAliases>
+		<typeAlias type="com.tx.pojo.User" alias="user"/>
+		<typeAlias type="com.tx.pojo.Power" alias="power"/>
+		<typeAlias type="com.tx.pojo.Announcement" alias="anno"/>
+		<typeAlias type="com.tx.pojo.Draft" alias="draft"/>
+		<typeAlias type="com.tx.pojo.Team" alias="team"/>
+		<typeAlias type="com.tx.pojo.Grade" alias="grade"/>
+		<typeAlias type="com.tx.pojo.Pick" alias="pick"/>
+		<typeAlias type="com.tx.pojo.Player" alias="player"/>
+		<typeAlias type="com.tx.pojo.Partion" alias="partion"/>
+		<typeAlias type="com.tx.pojo.Query" alias="query"/>
+		<typeAlias type="com.tx.pojo.Trade" alias="trade"/>
+		<typeAlias type="com.tx.pojo.Temp" alias="temp"/>
+		<typeAlias type="com.tx.pojo.TradeOn" alias="tradeOn"/>
+	</typeAliases>
+	
+	<!-- 引入映射文件 -->
+	<mappers>
+		<mapper resource="com/tx/dao/PowerDaoMapper.xml"/>
+		<mapper resource="com/tx/dao/UserDaoMapper.xml"/>
+		<mapper resource="com/tx/dao/AnnouncementDaoMapper.xml"/>
+		<mapper resource="com/tx/dao/DraftDaoMapper.xml"/>
+		<mapper resource="com/tx/dao/TeamDaoMapper.xml"/>
+		<mapper resource="com/tx/dao/GradeDaoMapper.xml"/>
+		<mapper resource="com/tx/dao/PickDaoMapper.xml"/>
+		<mapper resource="com/tx/dao/PlayerDaoMapper.xml"/>
+		<mapper resource="com/tx/dao/TradeDaoMapper.xml"/>
+		<mapper resource="com/tx/dao/TradeOnDaoMapper.xml"/>
+	</mappers> 
+</configuration>

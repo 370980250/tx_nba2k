@@ -1,0 +1,10 @@
+package com.tx.action;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("Rank")
+public class RankAction {
+
+}
