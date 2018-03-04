@@ -1,9 +1,0 @@
-package com.tx.service.inter;
-
-import com.tx.pojo.User;
-
-public interface IUserService {
-	public User queryUser(User u);
-	
-	public User queryUserByPname(String pname);
-}
